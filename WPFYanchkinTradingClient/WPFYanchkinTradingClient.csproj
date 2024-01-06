@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UI\Images\blueprint_128x128.png" />
+    <None Remove="UI\Images\chassis_128x128.png" />
+    <None Remove="UI\Images\helmet_128x128.png" />
+    <None Remove="UI\Images\Icons\Logo.ico" />
+    <None Remove="UI\Images\systems_128x128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.8.37221" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="UI\Images\blueprint_128x128.png" />
+    <Resource Include="UI\Images\chassis_128x128.png" />
+    <Resource Include="UI\Images\helmet_128x128.png" />
+    <Resource Include="UI\Images\Icons\Logo.ico" />
+    <Resource Include="UI\Images\systems_128x128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\Enums\" />
+    <Folder Include="Contracts\DataContracts\" />
+    <Folder Include="Contracts\Extensions\" />
+  </ItemGroup>
+
+</Project>
