@@ -11,7 +11,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <TextBox></TextBox>
-        <Button></Button>
+        <TextBox Grid.Column="0"></TextBox>
+        <Button Grid.Column="1">?</Button>
     </Grid>
 </UserControl>

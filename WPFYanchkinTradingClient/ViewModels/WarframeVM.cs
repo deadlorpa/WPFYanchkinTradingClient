@@ -15,7 +15,7 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// </summary>
         public ObservableCollection<WarframeDTO> Warframes
         {
-            get => _warframes;
+            get => _warframes ?? (_warframes = new ObservableCollection<WarframeDTO>());
             set => SetProperty(ref _warframes, value);
         }
 

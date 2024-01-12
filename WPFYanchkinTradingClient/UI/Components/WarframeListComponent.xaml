@@ -10,6 +10,7 @@
         SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe}">
         <ListView.ItemTemplate>
             <DataTemplate>
+
                 <StackPanel>
                     <Image Width="75" Height="75" Source="{Binding IconPath}"/>
                     <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
