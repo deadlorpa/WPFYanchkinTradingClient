@@ -10,17 +10,17 @@
         SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe}">
         <ListView.ItemTemplate>
             <DataTemplate>
-
                 <StackPanel>
-                    <Image Width="75" Height="75" Source="{Binding IconPath}"/>
-                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                    <Image 
+                        Width="75" 
+                        Height="75" 
+                        Source="{Binding IconPath}"/>
+                    <TextBlock 
+                        TextWrapping="Wrap"
+                        Text="{Binding Name}" 
+                        VerticalAlignment="Center"/>
                 </StackPanel>
             </DataTemplate>
         </ListView.ItemTemplate>
-        <ListView.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel/>
-            </ItemsPanelTemplate>
-        </ListView.ItemsPanel>
     </ListView>
 </UserControl>

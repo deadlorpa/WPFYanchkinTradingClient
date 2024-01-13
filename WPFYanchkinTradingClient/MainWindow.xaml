@@ -2,22 +2,32 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:wpfyanchkintradingclient="clr-namespace:WPFYanchkinTradingClient"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:WPFYanchkinTradingClient.UI.Components"
         mc:Ignorable="d"
-        Title="Yanchkin Trade" Height="450" Width="800" Icon="/UI/Images/Icons/Logo.ico">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <wpfyanchkintradingclient:WarframePartsComponent
-            Grid.Row="0"
-            Grid.Column="0"/>
-        <wpfyanchkintradingclient:ItemListComponent
-            Grid.Row="0"
-            Grid.Column="1"/>
-    </Grid>
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Height="450" Width="800"
+        Icon="/UI/Images/Icons/Logo.ico">
+    <Border
+        Background="{DynamicResource BackgroundColor}"
+        CornerRadius="{DynamicResource CommonCornerRadius}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!-- Header -->
+            <components:HeaderComponent
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"/>
+            <!-- Menu -->
+        </Grid>
+    </Border>
 </Window>

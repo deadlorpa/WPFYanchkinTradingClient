@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using Newtonsoft.Json;
+using Refit;
 
 namespace WPFYanchkinTradingClient.Contracts.DataContracts.WarframeMarket.GetAllItems
 {
@@ -17,6 +18,7 @@ namespace WPFYanchkinTradingClient.Contracts.DataContracts.WarframeMarket.GetAll
         /// <summary>
         /// URL в API
         /// </summary>
+        [JsonProperty(PropertyName= "url_name")]
         [AliasAs("url_name")]
         public string UrlName { get; set; }
 
