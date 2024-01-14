@@ -4,11 +4,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <ListView
-        BorderThickness="0"
-        Background="{DynamicResource SubMenuBackgroundColor}"
-        ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Warframes}"
-        SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe}"
-        ItemContainerStyle="{DynamicResource SubMenuItem}"/>
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox
+            Grid.Row="0"
+            Style="{DynamicResource SearchBar}"
+            Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SearchPattern, UpdateSourceTrigger=PropertyChanged}"/>
+        <ListView
+            Grid.Row="1"
+            BorderThickness="0"
+            Background="{DynamicResource SubMenuBackgroundColor}"
+            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Warframes}"
+            SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe, Mode=TwoWay}"
+            ItemContainerStyle="{DynamicResource SubMenuItem}"/>
+    </Grid>
 </UserControl>

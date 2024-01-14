@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.PlatformUI;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Xml.Linq;
 using WPFYanchkinTradingClient.Contracts.DTO;
 using WPFYanchkinTradingClient.ModelLayer;
 
@@ -9,6 +11,27 @@ namespace WPFYanchkinTradingClient.ViewModels
     {
         private WarframeModel _warframeModel;
 
+        private string _searchPattern;
+        public string SearchPattern
+        {
+            get => _searchPattern;
+            set
+            {
+                SetProperty(ref _searchPattern, value);
+                if (string.IsNullOrEmpty(value))
+                {
+                    Warframes = _reservedWarframes;
+                }
+                else
+                {
+                    Warframes = new ObservableCollection<WarframeDTO>(
+                    _reservedWarframes.Where(x => x.Name.StartsWith(SearchPattern))
+                    );
+                }
+            }
+        }
+
+        private ObservableCollection<WarframeDTO> _reservedWarframes;
         private ObservableCollection<WarframeDTO> _warframes;
         /// <summary>
         /// Список варфреймов
@@ -40,6 +63,7 @@ namespace WPFYanchkinTradingClient.ViewModels
         public void OnViewLoaded()
         {
             Warframes = _warframeModel.GetWarframes();
+            _reservedWarframes = Warframes;
         }
     }
 }

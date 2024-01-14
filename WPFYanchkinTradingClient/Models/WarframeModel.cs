@@ -31,9 +31,9 @@ namespace WPFYanchkinTradingClient.ModelLayer
         /// <returns></returns>
         public ObservableCollection<WarframeDTO> GetWarframes()
         {
-            var itemsResponce = WarframeMarketAPIClient.GetAllItems().Result;
+            //var itemsResponce = WarframeMarketAPIClient.GetAllItems().Result;
 
-            //var warframes = new ObservableCollection<WarframeDTO>();
+            var warframes = new ObservableCollection<WarframeDTO>();
             //foreach ( var item in itemsResponce.Payload.Items)
             //{
             //    warframes.Add(new WarframeDTO()
@@ -43,45 +43,21 @@ namespace WPFYanchkinTradingClient.ModelLayer
             //        IconPath = App.Config.GetSection("WarframeMarketAssets").Value + item.Thumb
             //    });
             //}
-            var warframes = new ObservableCollection<WarframeDTO>()
+            for (var i = 0; i<20; i++)
             {
-                new WarframeDTO()
+                warframes.Add(new WarframeDTO()
                 {
                     Url = "loki_prime_set",
                     Name = "loki prime",
                     IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
-                },
-                 new WarframeDTO()
-                {
-                    Url = "loki_prime_set",
-                    Name = "loki prime",
-                    IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
-                },
-                  new WarframeDTO()
-                {
-                    Url = "loki_prime_set",
-                    Name = "loki prime",
-                    IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
-                },
-                   new WarframeDTO()
-                {
-                    Url = "loki_prime_set",
-                    Name = "loki prime",
-                    IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
-                },
-                    new WarframeDTO()
-                {
-                    Url = "loki_prime_set",
-                    Name = "loki prime",
-                    IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
-                },
-                new WarframeDTO()
-                {
-                    Url = "nekros_prime_set",
-                    Name = "nekros prime",
-                    IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.nekros_prime_set.523943a15c82985ebe7cf14eac98966d.128x128.png"
-                }
-            };
+                });
+            }
+            warframes.Add(new WarframeDTO()
+            {
+                Url = "loki_prime_set",
+                Name = "koki prime",
+                IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
+            });
             return warframes;
         }
     }

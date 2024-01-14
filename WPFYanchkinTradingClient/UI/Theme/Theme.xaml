@@ -24,10 +24,22 @@
     <SolidColorBrush x:Key="HeaderTextSecondColor" Color="{StaticResource ColorTierS}"/>
 
     <!-- SubMenuItem SolidBrushes -->
-    <SolidColorBrush x:Key="SubMenuBackgroundColor" Color="{StaticResource ColorTierB}"/>
-    <SolidColorBrush x:Key="SubMenuItemBackgroundColor" Color="{StaticResource ColorTierC}"/>
+    <SolidColorBrush x:Key="SubMenuBackgroundColor" Color="{StaticResource ColorTierC}"/>
+    <SolidColorBrush x:Key="SubMenuItemBackgroundColor" Color="{StaticResource ColorTierB}"/>
     <SolidColorBrush x:Key="SubMenuItemBackgroundSecondColor" Color="{StaticResource ColorTierA}"/>
     <SolidColorBrush x:Key="SubMenuTextColor" Color="{StaticResource ColorTierA}"/>
     <SolidColorBrush x:Key="SubMenuTextSecondColor" Color="{StaticResource ColorTierD}"/>
+    
+    <!-- ScrollBar SolidBrushes-->
+    <SolidColorBrush x:Key="ScrollBarThumbColor" Color="{StaticResource ColorTierB}"/>
+    <SolidColorBrush x:Key="ScrollBarThumbSecondColor" Color="{StaticResource ColorTierA}"/>
+    <SolidColorBrush x:Key="ScrollBarBackgroundColor" Color="{StaticResource ColorTierC}"/>
+
+    <!-- SearchBar SolidBrushes -->
+    <SolidColorBrush x:Key="SearchBarBackgroundColor" Color="{StaticResource ColorTierC}"/>
+    <SolidColorBrush x:Key="SearchBarTextBlockBackgroundColor" Color="{StaticResource ColorTierB}"/>
+    <SolidColorBrush x:Key="SearchBarTextBlockBackgroundSecondColor" Color="{StaticResource ColorTierA}"/>
+    <SolidColorBrush x:Key="SearchBarTextColor" Color="{StaticResource ColorTierS}"/>
+    <SolidColorBrush x:Key="SearchBarTextSecondColor" Color="{StaticResource ColorTierC}"/>
 
 </ResourceDictionary>
