@@ -9,7 +9,7 @@
                 <ControlTemplate TargetType="ListViewItem">
                     <Border
                         Background="{TemplateBinding Background}"
-                        Height="50" Width="50"
+                        Height="50" Width="180"
                         CornerRadius="{DynamicResource CommonCornerRadius}"
                         Margin="8 2 8 2">
                         <StackPanel
