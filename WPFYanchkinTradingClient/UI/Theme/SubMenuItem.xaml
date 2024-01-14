@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="SubMenuItem" TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource SubMenuItemBackgroundColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SubMenuTextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        Height="50"
+                        CornerRadius="{DynamicResource CommonCornerRadius}"
+                        Margin="8 2 8 2">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="10 0 0 0">
+                            <Image 
+                                Width="50" 
+                                Height="50" 
+                                Source="{Binding IconPath}"/>
+                            <Label
+                                Foreground="{TemplateBinding Foreground}"
+                                Content="{Binding Name}"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Триггеры -->
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource SubMenuItemBackgroundSecondColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource SubMenuTextSecondColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

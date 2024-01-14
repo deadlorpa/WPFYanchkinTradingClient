@@ -28,6 +28,9 @@
                 Grid.Row="0"
                 Grid.ColumnSpan="2"/>
             <!-- Menu -->
+            <components:WarframeListComponent
+                Grid.Column="0"
+                Grid.Row="1"/>
         </Grid>
     </Border>
 </Window>

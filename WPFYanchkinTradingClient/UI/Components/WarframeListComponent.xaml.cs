@@ -1,14 +1,14 @@
 ﻿using System.Windows.Controls;
 using WPFYanchkinTradingClient.ViewModels;
 
-namespace WPFYanchkinTradingClient
+namespace WPFYanchkinTradingClient.UI.Components
 {
     /// <summary>
     /// Логика взаимодействия для ItemListComponent.xaml
     /// </summary>
-    public partial class ItemListComponent : UserControl
+    public partial class WarframeListComponent : UserControl
     {
-        public ItemListComponent()
+        public WarframeListComponent()
         {
             InitializeComponent();
             this.Loaded += OnLoaded;
