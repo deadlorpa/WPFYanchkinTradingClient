@@ -9,19 +9,27 @@
                 <ControlTemplate TargetType="ListViewItem">
                     <Border
                         Background="{TemplateBinding Background}"
-                        Height="50"
+                        Height="50" Width="50"
                         CornerRadius="{DynamicResource CommonCornerRadius}"
                         Margin="8 2 8 2">
                         <StackPanel
                             Orientation="Horizontal"
                             Margin="10 0 0 0">
                             <Image 
-                                Width="50" 
-                                Height="50" 
+                                Width="40" 
+                                Height="40" 
                                 Source="{Binding IconPath}"/>
-                            <Label
-                                Foreground="{TemplateBinding Foreground}"
-                                Content="{Binding Name}"/>
+                            <StackPanel>
+                                <Label
+                                    FontSize="12"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Content="{Binding Name}"/>
+                                <Label
+                                    FontSize="8"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Content="{Binding Url}"/>
+                            </StackPanel>
+                            
                         </StackPanel>
                     </Border>
                 </ControlTemplate>
