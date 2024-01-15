@@ -32,7 +32,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ScrollBar">
                     <Grid Width="15">
-                        <Border Width="13" HorizontalAlignment="Center" CornerRadius="5" Background="#33555555">
+                        <Border Width="13" HorizontalAlignment="Center" CornerRadius="5" Background="Transparent">
                         </Border>
                         <Track 
                             HorizontalAlignment="Center" 

@@ -8,30 +8,52 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
                     <Border
+                        x:Name="ItemBorder"
                         Background="{TemplateBinding Background}"
-                        Height="50" Width="180"
+                        Height="50" Width="210"
                         CornerRadius="{DynamicResource CommonCornerRadius}"
-                        Margin="8 2 8 2">
+                        Margin="4 2 4 2">
                         <StackPanel
+                            x:Name="ItemPanel"
                             Orientation="Horizontal"
-                            Margin="10 0 0 0">
-                            <Image 
+                            Margin="4 0 0 0">
+                            <Image
+                                x:Name="ItemIcon"
+                                Stretch="Uniform"
                                 Width="40" 
                                 Height="40" 
                                 Source="{Binding IconPath}"/>
-                            <StackPanel>
-                                <Label
+                            <StackPanel
+                                Margin="4 0 0 0"
+                                Width="150"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    x:Name="LabelName"
+                                    TextWrapping="Wrap"
                                     FontSize="12"
+                                    VerticalAlignment="Bottom"
                                     Foreground="{TemplateBinding Foreground}"
-                                    Content="{Binding Name}"/>
-                                <Label
+                                    Text="{Binding Name}"/>
+                                <TextBlock
+                                    x:Name="LableSubName"
                                     FontSize="8"
+                                    VerticalAlignment="Top"
                                     Foreground="{TemplateBinding Foreground}"
-                                    Content="{Binding Url}"/>
+                                    Text="{Binding Url}"/>
                             </StackPanel>
-                            
                         </StackPanel>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Height" Value="70"/>
+                            <Setter TargetName="LabelName" Property="FontSize" Value="14"/>
+                            <Setter TargetName="LableSubName" Property="FontSize" Value="10"/>
+                            <Setter TargetName="ItemIcon" Property="Height" Value="55"/>
+                            <Setter TargetName="ItemIcon" Property="Width" Value="55"/>
+                            <Setter TargetName="ItemPanel" Property="Margin" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

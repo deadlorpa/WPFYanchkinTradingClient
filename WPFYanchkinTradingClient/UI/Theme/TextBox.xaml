@@ -11,7 +11,7 @@
                         Background="{TemplateBinding Background}">
                         <Border
                             x:Name="TextBodyBorder"
-                            Margin="4 3 4 3"
+                            Margin="6 3 6 3"
                             Height="20"
                             Background="{DynamicResource SearchBarTextBlockBackgroundColor}"
                             CornerRadius="{DynamicResource CommonCornerRadius}">

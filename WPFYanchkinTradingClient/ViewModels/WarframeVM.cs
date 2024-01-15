@@ -25,7 +25,7 @@ namespace WPFYanchkinTradingClient.ViewModels
                 else
                 {
                     Warframes = new ObservableCollection<WarframeDTO>(
-                    _reservedWarframes.Where(x => x.Name.StartsWith(SearchPattern))
+                    _reservedWarframes.Where(x => x.Name.ToLower().StartsWith(SearchPattern.ToLower()))
                     );
                 }
             }
