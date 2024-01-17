@@ -29,14 +29,14 @@ namespace WPFYanchkinTradingClient.ModelLayer
         /// Получение списка варфреймов
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<WarframeDTO> GetWarframes()
+        public ObservableCollection<WarframeTradeItemDTO> GetWarframes()
         {
             var itemsResponce = WarframeMarketAPIClient.GetAllItems().Result;
 
-            var warframes = new ObservableCollection<WarframeDTO>();
+            var warframes = new ObservableCollection<WarframeTradeItemDTO>();
             foreach (var item in itemsResponce.Payload.Items)
             {
-                warframes.Add(new WarframeDTO()
+                warframes.Add(new WarframeTradeItemDTO()
                 {
                     Url = item.UrlName,
                     Name = item.ItemName,

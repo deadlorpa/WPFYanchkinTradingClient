@@ -1,11 +1,7 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.VisualStudio.PlatformUI;
-using System;
+﻿using Microsoft.VisualStudio.PlatformUI;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Data;
-using System.Xml.Linq;
 using WPFYanchkinTradingClient.Contracts.DTO;
 using WPFYanchkinTradingClient.ModelLayer;
 
@@ -15,6 +11,7 @@ namespace WPFYanchkinTradingClient.ViewModels
     {
         private WarframeModel _warframeModel;
 
+        #region Search
         private string _searchPattern;
         /// <summary>
         /// Шаблон поиска
@@ -29,9 +26,24 @@ namespace WPFYanchkinTradingClient.ViewModels
             }
         }
 
+        /// <summary>
+        /// Фильтр по поиску
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private bool FilterItemsCollection(object obj)
+        {
+            var item = obj as WarframeTradeItemDTO;
+            if (string.IsNullOrEmpty(_searchPattern))
+                return true;
+            return item.Name.ToLower().Contains(_searchPattern.ToLower());
+        }
+        #endregion
+
+        #region Warframe Trade Items
         private ICollectionView _itemsCollection;
         /// <summary>
-        /// Коллекция предметов
+        /// Коллекция предметов торговли Warframe для отображения
         /// </summary>
         public ICollectionView ItemsCollection
         {
@@ -39,25 +51,26 @@ namespace WPFYanchkinTradingClient.ViewModels
             set => SetProperty(ref _itemsCollection, value);
         }
 
-        private ObservableCollection<WarframeDTO> _warframes;
+        private ObservableCollection<WarframeTradeItemDTO> _warframeTradeItems;
         /// <summary>
-        /// Список варфреймов
+        /// Список предметов торговли Warframe
         /// </summary>
-        public ObservableCollection<WarframeDTO> Warframes
+        public ObservableCollection<WarframeTradeItemDTO> WarframeTradeItems
         {
-            get => _warframes ?? (_warframes = new ObservableCollection<WarframeDTO>());
-            set => SetProperty(ref _warframes, value);
+            get => _warframeTradeItems ?? (_warframeTradeItems = new ObservableCollection<WarframeTradeItemDTO>());
+            set => SetProperty(ref _warframeTradeItems, value);
         }
 
-        private WarframeDTO _selectedWarframe;
+        private WarframeTradeItemDTO _selectedWarframeTradeItem;
         /// <summary>
-        /// Выбранный варфрейм
+        /// Выбранный предмет торговли Warframe
         /// </summary>
-        public WarframeDTO SelectedWarframe
+        public WarframeTradeItemDTO SelectedWarframeTradeItem
         {
-            get => _selectedWarframe;
-            set => SetProperty(ref _selectedWarframe, value);
+            get => _selectedWarframeTradeItem;
+            set => SetProperty(ref _selectedWarframeTradeItem, value);
         }
+        #endregion
 
         public WarframeVM()
         {
@@ -69,22 +82,9 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// </summary>
         public void OnViewLoaded()
         {
-            Warframes = _warframeModel.GetWarframes();
-            ItemsCollection = CollectionViewSource.GetDefaultView(Warframes);
+            WarframeTradeItems = _warframeModel.GetWarframes();
+            ItemsCollection = CollectionViewSource.GetDefaultView(WarframeTradeItems);
             ItemsCollection.Filter = FilterItemsCollection;
-        }
-
-        /// <summary>
-        /// Фильтр по поиску
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        private bool FilterItemsCollection(object obj)
-        {
-            var item = obj as WarframeDTO;
-            if (string.IsNullOrEmpty(_searchPattern))
-                return true;
-            return item.Name.ToLower().Contains(_searchPattern.ToLower());
         }
     }
 }

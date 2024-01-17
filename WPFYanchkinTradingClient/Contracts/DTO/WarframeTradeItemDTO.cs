@@ -3,7 +3,7 @@
     /// <summary>
     /// Варфрейм
     /// </summary>
-    public class WarframeDTO
+    public class WarframeTradeItemDTO
     {
         /// <summary>
         /// URL

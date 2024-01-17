@@ -8,6 +8,11 @@
     <Color x:Key="ColorTierC">#FF262626</Color>
     <Color x:Key="ColorTierD">#FF0D0D0D</Color>
     
+    <!-- Durations -->
+    <Duration x:Key="ColorAnimationDuration">0:0:0.4</Duration>
+    <Duration x:Key="ChangeSizeAnimationDuration">0:0:0.4</Duration>
+    <Duration x:Key="VisibilityAnimationDuration">0:0:0.2</Duration>
+    
     <!-- CornerRadiuses -->
     <CornerRadius x:Key="CommonCornerRadius">8</CornerRadius>
     <CornerRadius x:Key="HeaderCornerRadius">8 8 0 0</CornerRadius>
@@ -26,10 +31,8 @@
     <!-- SubMenuItem SolidBrushes -->
     <SolidColorBrush x:Key="SubMenuBackgroundColor" Color="{StaticResource ColorTierC}"/>
     <SolidColorBrush x:Key="SubMenuItemBackgroundColor" Color="{StaticResource ColorTierB}"/>
-    <SolidColorBrush x:Key="SubMenuItemBackgroundSecondColor" Color="{StaticResource ColorTierA}"/>
     <SolidColorBrush x:Key="SubMenuTextColor" Color="{StaticResource ColorTierA}"/>
-    <SolidColorBrush x:Key="SubMenuTextSecondColor" Color="{StaticResource ColorTierD}"/>
-    
+
     <!-- ScrollBar SolidBrushes-->
     <SolidColorBrush x:Key="ScrollBarThumbColor" Color="{StaticResource ColorTierB}"/>
     <SolidColorBrush x:Key="ScrollBarThumbSecondColor" Color="{StaticResource ColorTierA}"/>
@@ -38,8 +41,6 @@
     <!-- SearchBar SolidBrushes -->
     <SolidColorBrush x:Key="SearchBarBackgroundColor" Color="{StaticResource ColorTierC}"/>
     <SolidColorBrush x:Key="SearchBarTextBlockBackgroundColor" Color="{StaticResource ColorTierB}"/>
-    <SolidColorBrush x:Key="SearchBarTextBlockBackgroundSecondColor" Color="{StaticResource ColorTierA}"/>
     <SolidColorBrush x:Key="SearchBarTextColor" Color="{StaticResource ColorTierS}"/>
-    <SolidColorBrush x:Key="SearchBarTextSecondColor" Color="{StaticResource ColorTierC}"/>
 
 </ResourceDictionary>

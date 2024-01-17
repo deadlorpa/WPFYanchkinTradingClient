@@ -35,15 +35,66 @@
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="TextBodyBorder" Property="Background" Value="{DynamicResource SearchBarTextBlockBackgroundSecondColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource SearchBarTextSecondColor}"/>
-                            <Setter TargetName="SearchPathIcon" Property="Visibility" Value="Collapsed"/>
-                        </Trigger>
+                        <EventTrigger RoutedEvent="GotFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames
+                                        Duration="{StaticResource VisibilityAnimationDuration}"
+                                        Storyboard.TargetName="SearchPathIcon"
+                                        Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ColorAnimation 
+                                        To="{StaticResource ColorTierA}" 
+                                        Duration="{StaticResource ColorAnimationDuration}" 
+                                        Storyboard.TargetName="TextBodyBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="LostFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames
+                                        Duration="{StaticResource VisibilityAnimationDuration}"
+                                        Storyboard.TargetName="SearchPathIcon"
+                                        Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ColorAnimation 
+                                        To="{StaticResource ColorTierB}" 
+                                        Duration="{StaticResource ColorAnimationDuration}" 
+                                        Storyboard.TargetName="TextBodyBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="GotFocus">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation 
+                            To="{StaticResource ColorTierC}" 
+                            Duration="{StaticResource ColorAnimationDuration}" 
+                            Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="LostFocus">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation 
+                            To="{StaticResource ColorTierS}" 
+                            Duration="{StaticResource ColorAnimationDuration}" 
+                            Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
         
 </ResourceDictionary>
