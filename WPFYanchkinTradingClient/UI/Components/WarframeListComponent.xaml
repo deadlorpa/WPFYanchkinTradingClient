@@ -18,7 +18,7 @@
             Grid.Row="1"
             BorderThickness="0"
             Background="{DynamicResource SubMenuBackgroundColor}"
-            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Warframes}"
+            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ItemsCollection}"
             SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe, Mode=TwoWay}"
             ItemContainerStyle="{DynamicResource SubMenuItem}"/>
     </Grid>

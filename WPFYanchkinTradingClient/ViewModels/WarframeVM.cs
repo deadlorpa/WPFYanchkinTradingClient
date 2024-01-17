@@ -1,6 +1,10 @@
-﻿using Microsoft.VisualStudio.PlatformUI;
+﻿using Microsoft.VisualBasic;
+using Microsoft.VisualStudio.PlatformUI;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Data;
 using System.Xml.Linq;
 using WPFYanchkinTradingClient.Contracts.DTO;
 using WPFYanchkinTradingClient.ModelLayer;
@@ -12,26 +16,29 @@ namespace WPFYanchkinTradingClient.ViewModels
         private WarframeModel _warframeModel;
 
         private string _searchPattern;
+        /// <summary>
+        /// Шаблон поиска
+        /// </summary>
         public string SearchPattern
         {
             get => _searchPattern;
             set
             {
                 SetProperty(ref _searchPattern, value);
-                if (string.IsNullOrEmpty(value))
-                {
-                    Warframes = _reservedWarframes;
-                }
-                else
-                {
-                    Warframes = new ObservableCollection<WarframeDTO>(
-                    _reservedWarframes.Where(x => x.Name.ToLower().StartsWith(SearchPattern.ToLower()))
-                    );
-                }
+                ItemsCollection.Refresh();
             }
         }
 
-        private ObservableCollection<WarframeDTO> _reservedWarframes;
+        private ICollectionView _itemsCollection;
+        /// <summary>
+        /// Коллекция предметов
+        /// </summary>
+        public ICollectionView ItemsCollection
+        {
+            get => _itemsCollection;
+            set => SetProperty(ref _itemsCollection, value);
+        }
+
         private ObservableCollection<WarframeDTO> _warframes;
         /// <summary>
         /// Список варфреймов
@@ -63,7 +70,21 @@ namespace WPFYanchkinTradingClient.ViewModels
         public void OnViewLoaded()
         {
             Warframes = _warframeModel.GetWarframes();
-            _reservedWarframes = Warframes;
+            ItemsCollection = CollectionViewSource.GetDefaultView(Warframes);
+            ItemsCollection.Filter = FilterItemsCollection;
+        }
+
+        /// <summary>
+        /// Фильтр по поиску
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private bool FilterItemsCollection(object obj)
+        {
+            var item = obj as WarframeDTO;
+            if (string.IsNullOrEmpty(_searchPattern))
+                return true;
+            return item.Name.ToLower().Contains(_searchPattern.ToLower());
         }
     }
 }
