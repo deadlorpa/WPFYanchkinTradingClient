@@ -2,36 +2,45 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="SearchBar" TargetType="TextBox">
-        <Setter Property="Foreground" Value="{DynamicResource SearchBarTextColor}"/>
-        <Setter Property="Background" Value="{DynamicResource SearchBarBackgroundColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource SearchBarTextColor}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Border
-                        Background="{TemplateBinding Background}">
+                        BorderThickness="0"
+                        Background="Transparent">
                         <Border
+                            BorderThickness="0"
                             x:Name="TextBodyBorder"
-                            Margin="6 3 6 3"
+                            Margin="6 0 6 0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Stretch"
                             Height="20"
-                            Background="{DynamicResource SearchBarTextBlockBackgroundColor}"
-                            CornerRadius="{DynamicResource CommonCornerRadius}">
-                            <DockPanel>
+                            Background="{StaticResource SearchBarTextBlockBackgroundColor}"
+                            CornerRadius="{StaticResource CommonCornerRadius}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="16"/>
+                                </Grid.ColumnDefinitions>
                                 <TextBlock
+                                    Grid.Column="0"
                                     Margin="6 0 0 0"
                                     VerticalAlignment="Center"
                                     FontWeight="Medium"
                                     Foreground="{TemplateBinding Foreground}"
                                     Text="{TemplateBinding Text}"/>
                                 <Path 
+                                    Grid.Column="1"
                                     x:Name="SearchPathIcon"
                                     Visibility="Visible"
                                     Stretch="Fill" Margin="0 0 6 0"
                                     VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
+                                    HorizontalAlignment="Center"
                                     Data="{StaticResource Search}"
                                     Fill="{TemplateBinding Foreground}"
                                     Width="10" Height="10"/>
-                            </DockPanel>
+                            </Grid>
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>

@@ -6,7 +6,23 @@
     <PathGeometry
         x:Key="Search"
         Figures="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
-    
+
+    <PathGeometry
+        x:Key="CloseWindow"
+        Figures="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z"/>
+
+    <PathGeometry
+        x:Key="MinimizeWindow"
+        Figures="M20,14H4V10H20"/>
+
+    <PathGeometry
+        x:Key="MaximizeWindow"
+        Figures="M4,6V19H20V6H4Z"/>
+
+    <PathGeometry
+        x:Key="UnmaximizeWindow"
+        Figures="M4,6V19H20V6H4M18,17H6V8H18V17Z"/>
+
     <PathGeometry
         x:Key="SortUp"
         Figures="M16 4.09375L15.28125 4.78125L6.78125 13.28125L8.21875 14.71875L15 7.9375L15 28L17 28L17 7.9375L23.78125 14.71875L25.21875 13.28125L16.71875 4.78125Z" />

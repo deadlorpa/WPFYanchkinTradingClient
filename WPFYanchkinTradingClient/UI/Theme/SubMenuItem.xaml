@@ -2,8 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <Style x:Key="SubMenuItem" TargetType="ListViewItem" x:Name="FullItem">
-        <Setter Property="Background" Value="{DynamicResource SubMenuItemBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource SubMenuTextColor}"/>
+        <Setter Property="Background" Value="{StaticResource SubMenuItemBackgroundColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource SubMenuTextColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
@@ -11,7 +12,7 @@
                         x:Name="ItemBorder"
                         Background="{TemplateBinding Background}"
                         Height="50" Width="210"
-                        CornerRadius="{DynamicResource CommonCornerRadius}"
+                        CornerRadius="{StaticResource CommonCornerRadius}"
                         Margin="4 2 4 2">
                         <StackPanel
                             x:Name="ItemPanel"
@@ -51,23 +52,23 @@
                                     <DoubleAnimation
                                         Storyboard.TargetName="LabelName"
                                         Storyboard.TargetProperty="FontSize"
-                                        From="12" To="14" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="12" To="16" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="LableSubName"
                                         Storyboard.TargetProperty="FontSize"
-                                        From="8" To="10" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="8" To="12" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="ItemBorder"
                                         Storyboard.TargetProperty="Height"
-                                        From="50" To="70" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="50" To="80" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="ItemIcon"
                                         Storyboard.TargetProperty="Height"
-                                        From="40" To="55" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="40" To="65" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="ItemIcon"
                                         Storyboard.TargetProperty="Width"
-                                        From="40" To="55" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="40" To="65" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -77,23 +78,23 @@
                                     <DoubleAnimation
                                         Storyboard.TargetName="LabelName"
                                         Storyboard.TargetProperty="FontSize"
-                                        From="14" To="12" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="16" To="12" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="LableSubName"
                                         Storyboard.TargetProperty="FontSize"
-                                        From="10" To="8" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="12" To="8" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="ItemBorder"
                                         Storyboard.TargetProperty="Height"
-                                        From="70" To="50" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="80" To="50" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="ItemIcon"
                                         Storyboard.TargetProperty="Height"
-                                        From="55" To="40" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="65" To="40" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                     <DoubleAnimation
                                         Storyboard.TargetName="ItemIcon"
                                         Storyboard.TargetProperty="Width"
-                                        From="55" To="40" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
+                                        From="65" To="40" Duration="{StaticResource ChangeSizeAnimationDuration}"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -103,10 +104,8 @@
         </Setter>
         <!-- Триггеры -->
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Visible}" Value="False">
-                <Setter Property="Visibility" Value="Hidden"/>
-            </DataTrigger>
-            <EventTrigger RoutedEvent="Selected">
+            <!-- MouseEnter -->
+            <EventTrigger RoutedEvent="MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>
                         <ColorAnimation 
@@ -120,7 +119,8 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
-            <EventTrigger RoutedEvent="Unselected">
+            <!-- MouseLeave -->
+            <EventTrigger RoutedEvent="MouseLeave">
                 <BeginStoryboard>
                     <Storyboard>
                         <ColorAnimation 

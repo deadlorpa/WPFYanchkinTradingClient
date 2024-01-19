@@ -6,9 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="38" d:DesignWidth="800">
     <Border
-        CornerRadius="{DynamicResource HeaderCornerRadius}"
-        Height="38"
-        Background="{DynamicResource HeaderColor}"
+        CornerRadius="{StaticResource HeaderCornerRadius}"
+        Height="40"
+        Background="{StaticResource HeaderColor}"
         MouseDown="OnMouseDown">
         <Grid
             HorizontalAlignment="Stretch">
@@ -18,7 +18,7 @@
                 Orientation="Horizontal">
                 <Label
                     VerticalAlignment="Center"
-                    Foreground="{DynamicResource HeaderTextColor}"
+                    Foreground="{StaticResource HeaderTextColor}"
                     FontSize="14"
                     FontWeight="SemiBold"
                     Content = "Yanchkin Trade"/>
@@ -28,13 +28,16 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
                 <Button 
-                    Style="{DynamicResource ButtonHeaderMinimize}"
+                    x:Name="MinimizeButton"
+                    Style="{StaticResource ButtonHeaderMinimize}"
                     Click="OnMinimizeClick"/>
                 <Button 
-                    Style="{DynamicResource ButtonHeaderMaximize}"
+                    x:Name="MaximizeButton"
+                    Style="{StaticResource ButtonHeaderMaximize}"
                     Click="OnMaximizeClick"/>
                 <Button 
-                    Style="{DynamicResource ButtonHeaderClose}"
+                    x:Name="CloseButton"
+                    Style="{StaticResource ButtonHeaderClose}"
                     Click="OnCloseClick"/>
             </StackPanel>
         </Grid>

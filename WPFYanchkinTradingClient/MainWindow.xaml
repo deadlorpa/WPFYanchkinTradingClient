@@ -11,8 +11,8 @@
         Height="450" Width="800"
         Icon="/UI/Images/Icons/Logo.ico">
     <Border
-        Background="{DynamicResource BackgroundColor}"
-        CornerRadius="{DynamicResource CommonCornerRadius}">
+        Background="Transparent"
+        CornerRadius="{StaticResource CommonCornerRadius}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="240"/>
@@ -30,6 +30,11 @@
             <!-- Menu -->
             <components:WarframeListComponent
                 Grid.Column="0"
+                Grid.Row="1"/>
+            <Border
+                CornerRadius="0 0 8 0"
+                Background="{StaticResource BackgroundColor}"
+                Grid.Column="1"
                 Grid.Row="1"/>
         </Grid>
     </Border>

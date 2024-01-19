@@ -47,10 +47,12 @@ namespace WPFYanchkinTradingClient.UI.Components
             if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
             {
                 Application.Current.MainWindow.WindowState = WindowState.Normal;
+                MaximizeButton.Style = (Style)this.TryFindResource("ButtonHeaderMaximize");
             }
             else
             {
                 Application.Current.MainWindow.WindowState = WindowState.Maximized;
+                MaximizeButton.Style = (Style)this.TryFindResource("ButtonHeaderUnmaximize");
             }
         }
 

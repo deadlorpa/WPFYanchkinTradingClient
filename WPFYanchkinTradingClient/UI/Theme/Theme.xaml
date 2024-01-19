@@ -24,9 +24,7 @@
     <!-- Header SolidBrushes -->
     <SolidColorBrush x:Key="HeaderColor" Color="{StaticResource ColorTierC}"/>
     <SolidColorBrush x:Key="HeaderControlColor" Color="{StaticResource ColorTierC}"/>
-    <SolidColorBrush x:Key="HeaderControlSecondColor" Color="{StaticResource ColorTierB}"/>
     <SolidColorBrush x:Key="HeaderTextColor" Color="{StaticResource ColorTierA}"/>
-    <SolidColorBrush x:Key="HeaderTextSecondColor" Color="{StaticResource ColorTierS}"/>
 
     <!-- SubMenuItem SolidBrushes -->
     <SolidColorBrush x:Key="SubMenuBackgroundColor" Color="{StaticResource ColorTierC}"/>

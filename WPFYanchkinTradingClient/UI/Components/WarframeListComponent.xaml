@@ -5,21 +5,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBox
+    <Border
+        CornerRadius="0 0 0 8"
+        BorderThickness="0"
+        Background="{StaticResource SubMenuBackgroundColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox
             Grid.Row="0"
-            Style="{DynamicResource SearchBar}"
+            Style="{StaticResource SearchBar}"
             Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SearchPattern, UpdateSourceTrigger=PropertyChanged}"/>
-        <ListView
-            Grid.Row="1"
-            BorderThickness="0"
-            Background="{DynamicResource SubMenuBackgroundColor}"
-            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ItemsCollection}"
-            SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe, Mode=TwoWay}"
-            ItemContainerStyle="{DynamicResource SubMenuItem}"/>
-    </Grid>
+            <ListView
+                Grid.Row="1"
+                BorderThickness="0"
+                Background="Transparent"
+                ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ItemsCollection}"
+                SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SelectedWarframe, Mode=TwoWay}"
+                ItemContainerStyle="{DynamicResource SubMenuItem}"/>
+        </Grid>
+    </Border>
+    
 </UserControl>

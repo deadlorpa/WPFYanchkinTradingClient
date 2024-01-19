@@ -11,8 +11,8 @@
                 <ControlTemplate TargetType="Thumb">
                     <Border 
                         Width="13" 
-                        Background="{DynamicResource ScrollBarThumbColor}" 
-                        CornerRadius="{DynamicResource CommonCornerRadius}"/>
+                        Background="{StaticResource ScrollBarThumbColor}" 
+                        CornerRadius="{StaticResource CommonCornerRadius}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -20,10 +20,10 @@
     <ControlTemplate x:Key="ScrollBackground" TargetType="{x:Type RepeatButton}">
         <Border 
             Name="Border"
-            Background="{DynamicResource ScrollBarBackgroundColor}"/>
+            Background="{StaticResource ScrollBarBackgroundColor}"/>
         <ControlTemplate.Triggers>
             <Trigger Property="IsPressed" Value="true">
-                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ScrollBarThumbSecondColor}" />
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource ScrollBarThumbSecondColor}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

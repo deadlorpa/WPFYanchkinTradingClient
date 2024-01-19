@@ -8,11 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="UI\Images\blueprint_128x128.png" />
-    <None Remove="UI\Images\chassis_128x128.png" />
-    <None Remove="UI\Images\helmet_128x128.png" />
     <None Remove="UI\Images\Icons\Logo.ico" />
-    <None Remove="UI\Images\systems_128x128.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,11 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="UI\Images\blueprint_128x128.png" />
-    <Resource Include="UI\Images\chassis_128x128.png" />
-    <Resource Include="UI\Images\helmet_128x128.png" />
     <Resource Include="UI\Images\Icons\Logo.ico" />
-    <Resource Include="UI\Images\systems_128x128.png" />
   </ItemGroup>
 
   <ItemGroup>
