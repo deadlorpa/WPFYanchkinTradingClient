@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="WPFYanchkinTradingClient.UI.Controls.DealCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFYanchkinTradingClient.UI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="100">
+    <Border
+        Height="50"
+        Width="100"
+        Background="{StaticResource DealCardBackground}"
+        BorderThickness="0"
+        CornerRadius="{StaticResource DealCardCornerRadius}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <local:DealerSmallCard
+                Grid.Row="1"
+                Height="30"
+                DataContext="{Binding Dealer}"/>
+        </Grid>
+    </Border>
+</UserControl>

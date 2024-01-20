@@ -68,7 +68,34 @@ namespace WPFYanchkinTradingClient.ViewModels
         public WarframeTradeItemDTO SelectedWarframeTradeItem
         {
             get => _selectedWarframeTradeItem;
-            set => SetProperty(ref _selectedWarframeTradeItem, value);
+            set
+            {
+                SetProperty(ref _selectedWarframeTradeItem, value);
+                if(_selectedWarframeTradeItem != null)
+                    OnSelectedTradeItemChanged();
+            }
+        }
+        #endregion
+
+        #region Deals
+        private ICollectionView _dealsCollection;
+        /// <summary>
+        /// Коллекция сделок Warframe для отображения
+        /// </summary>
+        public ICollectionView DealsCollection
+        {
+            get => _dealsCollection;
+            set => SetProperty(ref _dealsCollection, value);
+        }
+
+        private ObservableCollection<DealDTO> _deals;
+        /// <summary>
+        /// Сделки Warframe
+        /// </summary>
+        public ObservableCollection<DealDTO> Deals
+        {
+            get => _deals ?? (_deals = new ObservableCollection<DealDTO>());
+            set => SetProperty(ref _deals, value);
         }
         #endregion
 
@@ -82,9 +109,18 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// </summary>
         public void OnViewLoaded()
         {
-            WarframeTradeItems = _warframeModel.GetWarframes();
+            WarframeTradeItems = _warframeModel.GetTradeItems();
             ItemsCollection = CollectionViewSource.GetDefaultView(WarframeTradeItems);
             ItemsCollection.Filter = FilterItemsCollection;
+        }
+
+        /// <summary>
+        /// При изменении выбранного предмета торговли
+        /// </summary>
+        public void OnSelectedTradeItemChanged()
+        {
+            Deals = _warframeModel.GetDeals(SelectedWarframeTradeItem.Url);
+            DealsCollection = CollectionViewSource.GetDefaultView(Deals);
         }
     }
 }

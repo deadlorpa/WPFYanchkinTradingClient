@@ -6,6 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="UI/Theme/Theme.xaml"/>
+                <ResourceDictionary Source="UI/Theme/Converters.xaml"/>
                 <ResourceDictionary Source="UI/Theme/Button.xaml"/>
                 <ResourceDictionary Source="UI/Theme/GeometryIcons.xaml"/>
                 <ResourceDictionary Source="UI/Theme/TextBox.xaml"/>

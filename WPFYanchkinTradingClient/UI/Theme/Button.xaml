@@ -59,7 +59,7 @@
             </EventTrigger>
         </Style.Triggers>
     </Style>
-    
+    <!-- ButtonHeaderClose -->
     <Style x:Key="ButtonHeaderClose" TargetType="Button" BasedOn="{StaticResource ButtonHeader}">
         <Setter Property="Content">
             <Setter.Value>
@@ -72,7 +72,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!-- ButtonHeaderMaximize -->
     <Style x:Key="ButtonHeaderMaximize" TargetType="Button" BasedOn="{StaticResource ButtonHeader}">
         <Setter Property="Content">
             <Setter.Value>
@@ -86,7 +86,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!-- ButtonHeaderUnmaximize -->
     <Style x:Key="ButtonHeaderUnmaximize" TargetType="Button" BasedOn="{StaticResource ButtonHeader}">
         <Setter Property="Content">
             <Setter.Value>
@@ -100,7 +100,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!-- ButtonHeaderMinimize -->
     <Style x:Key="ButtonHeaderMinimize" TargetType="Button" BasedOn="{StaticResource ButtonHeader}">
         <Setter Property="Content">
             <Setter.Value>

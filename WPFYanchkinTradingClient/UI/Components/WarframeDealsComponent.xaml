@@ -1,0 +1,30 @@
+﻿<UserControl x:Name="warframeDealsComponent" x:Class="WPFYanchkinTradingClient.UI.Components.WarframeDealsComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:WPFYanchkinTradingClient.UI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border
+        Background="{StaticResource DealsComponentBackground}"
+        CornerRadius="0 0 8 0">
+        <!-- TODO: создать стиль -->
+        <ListView
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            BorderThickness="0"
+            Background="Transparent"
+            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DealsCollection}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <controls:DealCard/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+    </Border>
+</UserControl>

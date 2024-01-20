@@ -3,23 +3,23 @@
 namespace WPFYanchkinTradingClient.Contracts.DTO
 {
     /// <summary>
-    /// Сделка
+    /// Сдельщик
     /// </summary>
-    public class DealDTO
+    public class DealerDTO
     {
         /// <summary>
-        /// Продавец
+        /// Внутриигровое имя
         /// </summary>
-        public DealerDTO Dealer { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Тип сделки
+        /// Статус
         /// </summary>
-        public DealTypes DealTypes { get; set; }
+        public DealerStatuses Status { get; set; }
 
         /// <summary>
-        /// Цена
+        /// Регион
         /// </summary>
-        public int Price { get; set; }
+        public Regions Region { get; set; }
     }
 }
