@@ -1,9 +1,9 @@
-﻿namespace WPFYanchkinTradingClient.Contracts.DTO
+﻿namespace WPFYanchkinTradingClient.Contracts.DTO.TradeItem
 {
     /// <summary>
-    /// Варфрейм
+    /// Предмет торговли
     /// </summary>
-    public class WarframeTradeItemDTO
+    public class TradeItemDTO
     {
         /// <summary>
         /// URL

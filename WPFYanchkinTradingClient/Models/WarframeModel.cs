@@ -1,7 +1,9 @@
 ﻿using Refit;
 using System.Collections.ObjectModel;
-using System.Windows;
+using System.Threading.Tasks;
 using WPFYanchkinTradingClient.Contracts.DTO;
+using WPFYanchkinTradingClient.Contracts.DTO.TradeItem;
+using WPFYanchkinTradingClient.Contracts.Extensions;
 using WPFYanchkinTradingClient.Helpers;
 using WPFYanchkinTradingClient.Interfaces;
 
@@ -30,30 +32,25 @@ namespace WPFYanchkinTradingClient.ModelLayer
         /// Получить список предметов торговли
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<WarframeTradeItemDTO> GetTradeItems()
+        public async Task<ObservableCollection<WarframeMarketTradeItemDTO>> GetTradeItems()
         {
-            var items = new ObservableCollection<WarframeTradeItemDTO>();
 #if DEBUG
-            for (var i = 0; i < 20; i++)
+            var items = new ObservableCollection<WarframeMarketTradeItemDTO>();
+            items.Add(new WarframeMarketTradeItemDTO()
             {
-                items.Add(new WarframeTradeItemDTO()
-                {
-                    Url = "loki_prime_set",
-                    Name = "loki prime",
-                    IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
-                });
-            }
+                Url = "mirage_prime_systems",
+                Name = "Mirage",
+                IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.mirage_prime_set.e7f8f484dd6ae6c35f0767fff35a5109.128x128.png"
+            });
+            items.Add(new WarframeMarketTradeItemDTO()
+            {
+                Url = "loki_prime_set",
+                Name = "loki",
+                IconPath = "C:\\Users\\Public\\Warframe Parser Icons\\items.images.en.thumbs.loki_prime_set.abc05c280f92196bcb688643873fbf95.128x128.png"
+            });
 #else
-            var itemsResponce = WarframeMarketAPIClient.GetAllItems().Result;
-            foreach (var item in itemsResponce.Payload.Items)
-            {
-                warframes.Add(new WarframeTradeItemDTO()
-                {
-                    Url = item.UrlName,
-                    Name = item.ItemName,
-                    IconPath = App.Config.GetSection("WarframeMarketAssets").Value + item.Thumb
-                });
-            }
+            var itemsResponce = await WarframeMarketAPIClient.GetAllItems();
+            var items = itemsResponce.ToTradeItemDTOs();
 #endif
             return items;
         }
@@ -63,9 +60,9 @@ namespace WPFYanchkinTradingClient.ModelLayer
         /// </summary>
         /// <param name="itemUrl"></param>
         /// <returns></returns>
-        public ObservableCollection<WarframeTradeItemInfoDTO> GetTradeItemInfo(string itemUrl)
+        public async Task<ObservableCollection<WarframeMarketTradeItemInfoDTO>> GetTradeItemInfo(string itemUrl)
         {
-            var itemInfo = new ObservableCollection<WarframeTradeItemInfoDTO>();
+            var itemInfo = new ObservableCollection<WarframeMarketTradeItemInfoDTO>();
             // TODO: реализовать обмен
             return itemInfo; 
         }
@@ -75,11 +72,11 @@ namespace WPFYanchkinTradingClient.ModelLayer
         /// </summary>
         /// <param name="itemUrl"></param>
         /// <returns></returns>
-        public ObservableCollection<DealDTO> GetDeals(string itemUrl) 
-        { 
-            var deals = new ObservableCollection<DealDTO>();
+        public async Task<ObservableCollection<DealDTO>> GetDeals(string itemUrl) 
+        {
 #if DEBUG
-            for (int i = 0; i< 5; i++)
+            var deals = new ObservableCollection<DealDTO>();
+            for (int i = 0; i < 5; i++)
             {
                 deals.Add(new DealDTO()
                 {
@@ -89,7 +86,7 @@ namespace WPFYanchkinTradingClient.ModelLayer
                         Status = Contracts.Enums.DealerStatuses.Online,
                         Region = Contracts.Enums.Regions.Ru
                     },
-                    DealTypes = Contracts.Enums.DealTypes.Buy,
+                    Type = Contracts.Enums.DealTypes.Buy,
                     Price = i * 10
                 });
             }
@@ -103,7 +100,7 @@ namespace WPFYanchkinTradingClient.ModelLayer
                         Status = Contracts.Enums.DealerStatuses.Offline,
                         Region = Contracts.Enums.Regions.Ru
                     },
-                    DealTypes = Contracts.Enums.DealTypes.Buy,
+                    Type = Contracts.Enums.DealTypes.Buy,
                     Price = i * 10
                 });
             }
@@ -117,12 +114,13 @@ namespace WPFYanchkinTradingClient.ModelLayer
                         Status = Contracts.Enums.DealerStatuses.InGame,
                         Region = Contracts.Enums.Regions.Ru
                     },
-                    DealTypes = Contracts.Enums.DealTypes.Sell,
+                    Type = Contracts.Enums.DealTypes.Sell,
                     Price = i * 10
                 });
             }
 #else
-            // TODO: реализовать обмен
+            var dealsResponce = await _warframeMarketAPIClient.GetItemOrders(itemUrl);
+            var deals = dealsResponce.ToDealDTOs();
 #endif
             return deals; 
         }

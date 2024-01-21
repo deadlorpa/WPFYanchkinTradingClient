@@ -1,6 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:converters="clr-namespace:WPFYanchkinTradingClient.UI.Converters">
-    
-    <converters:DealerStatusesToColorConverter x:Key="DealerStatusesToColorConverter"/>
-    
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:WPFYanchkinTradingClient.UI.Converters">
+
+    <converters:DealerStatusesToSolidColorBrushConverter x:Key="DealerStatusesToSolidColorBrushConverter"/>
+    <converters:DealTypesToSolidColorBrushConverter x:Key="DealTypesToSolidColorBrushConverter"/>
+
 </ResourceDictionary>

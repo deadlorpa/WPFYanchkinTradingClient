@@ -17,36 +17,42 @@ namespace WPFYanchkinTradingClient.Contracts.DataContracts.WarframeMarket.GetIte
         /// Внутриигровое имя
         /// </summary>
         [AliasAs("ingame_name")]
-        public string IngameName { get; set; }
+        public string? IngameName { get; set; }
 
         /// <summary>
         /// Статус
         /// </summary>
         [AliasAs("status")]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// Регион
         /// </summary>
         [AliasAs("region")]
-        public string Region { get; set; }
+        public string? Region { get; set; }
+
+        /// <summary>
+        /// Локаль
+        /// </summary>
+        [AliasAs("locale")]
+        public string? Locale { get; set; }
 
         /// <summary>
         /// Репутация
         /// </summary>
         [AliasAs("reputation")]
-        public int Reputation { get; set; }
+        public int? Reputation { get; set; }
 
         /// <summary>
         /// Аватар
         /// </summary>
         [AliasAs("avatar")]
-        public string Avatar { get; set; }
+        public string? Avatar { get; set; }
 
         /// <summary>
         /// Последний онлайн
         /// </summary>
         [AliasAs("last_seen")]
-        public string LastSeen { get; set; }
+        public string? LastSeen { get; set; }
     }
 }

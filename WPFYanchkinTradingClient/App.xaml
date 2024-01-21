@@ -7,11 +7,13 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="UI/Theme/Theme.xaml"/>
                 <ResourceDictionary Source="UI/Theme/Converters.xaml"/>
-                <ResourceDictionary Source="UI/Theme/Button.xaml"/>
                 <ResourceDictionary Source="UI/Theme/GeometryIcons.xaml"/>
+                <!-- Control Styles -->
                 <ResourceDictionary Source="UI/Theme/TextBox.xaml"/>
+                <ResourceDictionary Source="UI/Theme/Button.xaml"/>
                 <ResourceDictionary Source="UI/Theme/ScrollBar.xaml"/>
-                <ResourceDictionary Source="UI/Theme/SubMenuItem.xaml"/>
+                <ResourceDictionary Source="UI/Theme/ListView.xaml"/>
+                <ResourceDictionary Source="UI/Theme/ListViewItem.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

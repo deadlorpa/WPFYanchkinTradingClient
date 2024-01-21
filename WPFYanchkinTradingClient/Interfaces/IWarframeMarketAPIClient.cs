@@ -30,6 +30,6 @@ namespace WPFYanchkinTradingClient.Interfaces
         /// </summary>
         /// <returns></returns>
         [Get("/items/{urlName}/orders")]
-        Task<GetItemOrdersResponceDC> GetItemOrders(string urlName, [Header("Platform")] string platform );
+        Task<GetItemOrdersResponceDC> GetItemOrders(string urlName, [Header("Platform")] string platform="pc" );
     }
 }

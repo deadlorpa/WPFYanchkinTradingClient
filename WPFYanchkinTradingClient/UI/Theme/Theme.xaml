@@ -9,29 +9,40 @@
     <Color x:Key="ColorTierD">#FF0D0D0D</Color>
     <Color x:Key="ColorUnknown">#111111</Color>
 
+    <!-- Tag Color -->
+    <Color x:Key="ColorTagRegion">#8C5D42</Color>
+    <Color x:Key="ColorTag">#A6978A</Color>
+    
     <!-- DealerStatuses Colors -->
-    <Color x:Key="ColorDealerStatusOnline">#62D98B</Color>
-    <Color x:Key="ColorDealerStatusOffline">#F25E5E</Color>
-    <Color x:Key="ColorDealerStatusInGame">#0597F2</Color>
+    <Color x:Key="ColorOnline">#D9D9D9</Color>
+    <Color x:Key="ColorOffline">#59321C</Color>
+    <Color x:Key="ColorInGame">#BFAC95</Color>
 
     <!-- DealTypes Colors -->
-    <Color x:Key="ColorDealTypeBuy">#03A688</Color>
-    <Color x:Key="ColorDealTypeSell">#8D44F2</Color>
+    <Color x:Key="ColorBuy">#D98E04</Color>
+    <Color x:Key="ColorSell">#8D44F2</Color>
 
-    <!-- Durations -->
+    <!--region Durations -->
     <Duration x:Key="ColorAnimationDuration">0:0:0.4</Duration>
     <Duration x:Key="ChangeSizeAnimationDuration">0:0:0.4</Duration>
     <Duration x:Key="VisibilityAnimationDuration">0:0:0.2</Duration>
-    
-    <!-- CornerRadiuses -->
+    <!--endregion -->
+        
+    <!--region CornerRadiuses -->
     <CornerRadius x:Key="CommonCornerRadius">8</CornerRadius>
     <CornerRadius x:Key="HeaderCornerRadius">8 8 0 0</CornerRadius>
-    <CornerRadius x:Key="SubMenuIconCornerRadius">25</CornerRadius>
+    <CornerRadius x:Key="SubMenuIconCornerRadius">24</CornerRadius>
     <CornerRadius x:Key="DealCardCornerRadius">10</CornerRadius>
     <CornerRadius x:Key="DealerSmallCardRadius">8</CornerRadius>
+    <CornerRadius x:Key="TagBoxRadius">8</CornerRadius>
+    <!--endregion -->
     
     <!-- Backgrounds -->
     <SolidColorBrush x:Key="BackgroundColor" Color="{StaticResource ColorTierS}"/>
+    <SolidColorBrush x:Key="ForegroundColor" Color="{StaticResource ColorTierS}"/>
+    
+    <!-- Core SolidBrushes -->
+    <SolidColorBrush x:Key="ColorBrushUnknown" Color="{StaticResource ColorUnknown}"/>
     
     <!-- Header SolidBrushes -->
     <SolidColorBrush x:Key="HeaderColor" Color="{StaticResource ColorTierC}"/>
@@ -54,9 +65,20 @@
     <SolidColorBrush x:Key="SearchBarTextColor" Color="{StaticResource ColorTierS}"/>
 
     <!-- DealsComponent SolidBrushes -->
-    <SolidColorBrush x:Key="DealsComponentBackground" Color="{StaticResource ColorTierC}"/>
+    <SolidColorBrush x:Key="DealsComponentBackground" Color="{StaticResource ColorTierB}"/>
     
     <!-- DealCard SolidBrushes -->
-    <SolidColorBrush x:Key="DealCardBackground" Color="{StaticResource ColorTierA}"/>
+    <SolidColorBrush x:Key="ColorDealTypeBuy" Color="{StaticResource ColorBuy}"/>
+    <SolidColorBrush x:Key="ColorDealTypeSell" Color="{StaticResource ColorSell}"/>
+    <SolidColorBrush x:Key="DealCardBackground" Color="{StaticResource ColorTierC}"/>
+
+    <!-- DealerSmallCard SolidBrushes -->
+    <SolidColorBrush x:Key="ColorDealerStatusOnline" Color="{StaticResource ColorOnline}"/>
+    <SolidColorBrush x:Key="ColorDealerStatusOffline" Color="{StaticResource ColorOffline}"/>
+    <SolidColorBrush x:Key="ColorDealerStatusInGame" Color="{StaticResource ColorInGame}"/>
+
+    <!-- TagBox SolidBrushes -->
+    <SolidColorBrush x:Key="ColorTagBoxRegion" Color="{StaticResource ColorTagRegion}"/>
+    <SolidColorBrush x:Key="ColorTagBox" Color="{StaticResource ColorTag}"/>
     
 </ResourceDictionary>

@@ -1,8 +1,12 @@
 ﻿using Microsoft.VisualStudio.PlatformUI;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 using WPFYanchkinTradingClient.Contracts.DTO;
+using WPFYanchkinTradingClient.Contracts.DTO.TradeItem;
+using WPFYanchkinTradingClient.Contracts.Enums;
+using WPFYanchkinTradingClient.Contracts.Extensions;
 using WPFYanchkinTradingClient.ModelLayer;
 
 namespace WPFYanchkinTradingClient.ViewModels
@@ -10,6 +14,16 @@ namespace WPFYanchkinTradingClient.ViewModels
     public class WarframeVM : ObservableObject
     {
         private WarframeModel _warframeModel;
+
+        #region Dictionaries
+        private Dictionary<string, DealTypes> _dealTypesDictionary;
+        public Dictionary<string, DealTypes> DealTypesDictionary 
+        {
+            get => _dealTypesDictionary;
+            set => SetProperty(ref _dealTypesDictionary, value);
+        }
+
+        #endregion
 
         #region Search
         private string _searchPattern;
@@ -33,7 +47,7 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// <returns></returns>
         private bool FilterItemsCollection(object obj)
         {
-            var item = obj as WarframeTradeItemDTO;
+            var item = obj as WarframeMarketTradeItemDTO;
             if (string.IsNullOrEmpty(_searchPattern))
                 return true;
             return item.Name.ToLower().Contains(_searchPattern.ToLower());
@@ -51,21 +65,21 @@ namespace WPFYanchkinTradingClient.ViewModels
             set => SetProperty(ref _itemsCollection, value);
         }
 
-        private ObservableCollection<WarframeTradeItemDTO> _warframeTradeItems;
+        private ObservableCollection<WarframeMarketTradeItemDTO> _warframeTradeItems;
         /// <summary>
         /// Список предметов торговли Warframe
         /// </summary>
-        public ObservableCollection<WarframeTradeItemDTO> WarframeTradeItems
+        public ObservableCollection<WarframeMarketTradeItemDTO> WarframeTradeItems
         {
-            get => _warframeTradeItems ?? (_warframeTradeItems = new ObservableCollection<WarframeTradeItemDTO>());
+            get => _warframeTradeItems ?? (_warframeTradeItems = new ObservableCollection<WarframeMarketTradeItemDTO>());
             set => SetProperty(ref _warframeTradeItems, value);
         }
 
-        private WarframeTradeItemDTO _selectedWarframeTradeItem;
+        private WarframeMarketTradeItemDTO _selectedWarframeTradeItem;
         /// <summary>
         /// Выбранный предмет торговли Warframe
         /// </summary>
-        public WarframeTradeItemDTO SelectedWarframeTradeItem
+        public WarframeMarketTradeItemDTO SelectedWarframeTradeItem
         {
             get => _selectedWarframeTradeItem;
             set
@@ -99,6 +113,46 @@ namespace WPFYanchkinTradingClient.ViewModels
         }
         #endregion
 
+        #region Deals Filters
+        /// <summary>
+        /// Фильтр коллеции сделок
+        /// </summary>
+        /// <param name="dealObject"></param>
+        /// <returns></returns>
+        private bool FilterDealsCollection(object dealObject)
+        {
+            var deal = (DealDTO)dealObject;
+            return FilterDealType(deal.Type);
+        }
+
+        private string _filteredDealType;
+        /// <summary>
+        /// Фильтр типа сделки
+        /// </summary>
+        public string FilteredDealType
+        {
+            get => _filteredDealType;
+            set
+            {
+                SetProperty(ref _filteredDealType, value);
+                if(DealsCollection != null)
+                    DealsCollection.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Ответ фильтра типа сделки
+        /// </summary>
+        /// <param name="dealType"></param>
+        /// <returns></returns>
+        private bool FilterDealType(DealTypes dealType)
+        {
+            if (string.IsNullOrEmpty(_filteredDealType) || _filteredDealType==DealTypes.Unknown.ToString())
+                return true;
+            return DealTypesDictionary[_filteredDealType] == dealType;
+        }
+        #endregion
+
         public WarframeVM()
         {
             _warframeModel = new WarframeModel();
@@ -107,9 +161,10 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// <summary>
         /// При загрузке вьюшки
         /// </summary>
-        public void OnViewLoaded()
+        public async void OnViewLoaded()
         {
-            WarframeTradeItems = _warframeModel.GetTradeItems();
+            DealTypesDictionary = DealTypesExtensions.ToDictionary();
+            WarframeTradeItems = await _warframeModel.GetTradeItems();
             ItemsCollection = CollectionViewSource.GetDefaultView(WarframeTradeItems);
             ItemsCollection.Filter = FilterItemsCollection;
         }
@@ -117,10 +172,11 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// <summary>
         /// При изменении выбранного предмета торговли
         /// </summary>
-        public void OnSelectedTradeItemChanged()
+        public async void OnSelectedTradeItemChanged()
         {
-            Deals = _warframeModel.GetDeals(SelectedWarframeTradeItem.Url);
+            Deals = await _warframeModel.GetDeals(SelectedWarframeTradeItem.Url);
             DealsCollection = CollectionViewSource.GetDefaultView(Deals);
+            DealsCollection.Filter = FilterDealsCollection;
         }
     }
 }

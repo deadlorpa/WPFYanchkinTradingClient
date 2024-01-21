@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WPFYanchkinTradingClient.Contracts.Enums;
 
 namespace WPFYanchkinTradingClient.Contracts.Extensions
@@ -17,6 +18,21 @@ namespace WPFYanchkinTradingClient.Contracts.Extensions
         {
             return Enum.TryParse(typeof(DealTypes), dealType, true, out object? result) ?
                (DealTypes)result : DealTypes.Unknown;
+        }
+
+        /// <summary>
+        /// Возвращает словарь типов сделок
+        /// </summary>
+        /// <param name="dealTypes"></param>
+        /// <returns></returns>
+        public static Dictionary<string, DealTypes> ToDictionary()
+        {
+            var result = new Dictionary<string, DealTypes>();
+            foreach(var dealType in Enum.GetValues(typeof(DealTypes)))
+            {
+                result.Add(dealType.ToString(), (DealTypes)dealType);
+            }
+            return result;
         }
     }
 }

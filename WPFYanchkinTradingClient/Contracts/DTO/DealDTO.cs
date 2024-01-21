@@ -15,7 +15,7 @@ namespace WPFYanchkinTradingClient.Contracts.DTO
         /// <summary>
         /// Тип сделки
         /// </summary>
-        public DealTypes DealTypes { get; set; }
+        public DealTypes Type { get; set; }
 
         /// <summary>
         /// Цена

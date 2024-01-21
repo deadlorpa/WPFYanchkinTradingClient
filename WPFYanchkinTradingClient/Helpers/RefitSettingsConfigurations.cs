@@ -19,9 +19,9 @@ namespace WPFYanchkinTradingClient.Helpers
                 ContentSerializer = new SystemTextJsonContentSerializer(
                     new JsonSerializerOptions()
                     {
-                        WriteIndented = true,
                         PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-                        NumberHandling = JsonNumberHandling.AllowReadingFromString
+                        NumberHandling = JsonNumberHandling.AllowReadingFromString,
+                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
                     })
             };
     }

@@ -4,23 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFYanchkinTradingClient.UI.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="100">
+             mc:Ignorable="d" BorderThickness="0"
+             Height="80" 
+             Width="128">
     <Border
-        Height="50"
-        Width="100"
         Background="{StaticResource DealCardBackground}"
         BorderThickness="0"
         CornerRadius="{StaticResource DealCardCornerRadius}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <local:DealerSmallCard
-                Grid.Row="1"
-                Height="30"
+                Opacity="1.0"
+                Grid.Row="0"
                 DataContext="{Binding Dealer}"/>
+            <local:DealDetailSmallCard
+                Grid.Row="1" 
+                DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DealCard}}}"/>
         </Grid>
+        <Border.Triggers>
+            <!-- MouseEnter -->
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation 
+                            To="{StaticResource ColorTierD}" 
+                            Duration="{StaticResource ColorAnimationDuration}" 
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <!-- MouseLeave -->
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation 
+                            To="{StaticResource ColorTierC}" 
+                            Duration="{StaticResource ColorAnimationDuration}"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
     </Border>
 </UserControl>
