@@ -2,26 +2,54 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:WPFYanchkinTradingClient.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border
         Background="{StaticResource DealsComponentBackground}"
         CornerRadius="0 0 8 0">
-        <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <StackPanel
+                Grid.Row="0"
                 Orientation="Horizontal">
-                <ComboBox
-                    SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.FilteredDealType}"
-                    ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DealTypesDictionary.Keys}"/>
+                <controls:FilterBox
+                    Hint="Dealer Status"
+                    FilterSelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Mode=TwoWay, Path=DataContext.FilteredDealerStatus}"
+                    FilterItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DealerStatusesDictionary.Keys}"/>
+                <controls:FilterBox
+                    Hint="Dealer Type"
+                    FilterSelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Mode=TwoWay, Path=DataContext.FilteredDealType}"
+                    FilterItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DealTypesDictionary.Keys}"/>
+                <!--<ComboBox
+                    SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.FilteredRegion}"
+                    ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.RegionsDictionary.Keys}"/>-->
             </StackPanel>
-            <ListView
-                Style="{StaticResource DealListView}"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                BorderThickness="0"
-                Background="Transparent"
-                ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DealsCollection}"/>
-        </StackPanel>
+            <ScrollViewer
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Visible"
+                HorizontalScrollBarVisibility="Disabled"
+                CanContentScroll="True">
+                <ItemsControl
+                    ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DealsCollection}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel
+                                Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:DealCard
+                                Padding="3"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
         
     </Border>
 </UserControl>

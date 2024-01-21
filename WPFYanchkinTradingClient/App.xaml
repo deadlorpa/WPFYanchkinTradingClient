@@ -12,7 +12,6 @@
                 <ResourceDictionary Source="UI/Theme/TextBox.xaml"/>
                 <ResourceDictionary Source="UI/Theme/Button.xaml"/>
                 <ResourceDictionary Source="UI/Theme/ScrollBar.xaml"/>
-                <ResourceDictionary Source="UI/Theme/ListView.xaml"/>
                 <ResourceDictionary Source="UI/Theme/ListViewItem.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

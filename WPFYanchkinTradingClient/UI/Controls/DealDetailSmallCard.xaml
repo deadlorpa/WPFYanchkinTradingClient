@@ -19,13 +19,26 @@
                             Mode=OneWay,
                             FallbackValue={StaticResource ColorBrushUnknown}}"
                 Text="{Binding Type, FallbackValue=Unknown}"/>
-            <TextBlock
-                FontSize="18"
-                Margin="0 0 8 0"
-                Foreground="{StaticResource ForegroundColor}"
-                VerticalAlignment="Center"
+            <StackPanel
                 HorizontalAlignment="Right"
-                Text="{Binding Price, FallbackValue=0}"/>
+                Margin="0 0 8 0">
+                <TextBlock
+                     Text="price"
+                     FontSize="8"
+                     VerticalAlignment="Center"
+                     TextAlignment="Right"
+                     Foreground="{StaticResource ForegroundColor}"/>
+                <Rectangle
+                    Width="auto"
+                    Height="1"
+                    Fill="{StaticResource ForegroundColor}"/>
+                <TextBlock
+                    FontSize="16"
+                    Foreground="{StaticResource ForegroundColor}"
+                    TextAlignment="Right"
+                    Text="{Binding Price, FallbackValue=0}"/>
+            </StackPanel>
+            
         </Grid>
     </Border>
 </UserControl>

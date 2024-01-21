@@ -19,7 +19,7 @@ namespace WPFYanchkinTradingClient.Contracts.Extensions
             {
                 Name = dc.IngameName,
                 Status = DealerStatusesExtensions.FromWarframeMarket(dc.Status),
-                Region = RegionsExtensions.FromWarframeMarket(dc.Region)
+                Region = RegionsExtensions.FromWarframeMarket(dc.Locale)
             };
         }
     }

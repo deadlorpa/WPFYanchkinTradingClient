@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WPFYanchkinTradingClient.Contracts.Enums;
 
 namespace WPFYanchkinTradingClient.Contracts.Extensions
@@ -17,6 +18,20 @@ namespace WPFYanchkinTradingClient.Contracts.Extensions
         {
             return Enum.TryParse(typeof(DealerStatuses), status, true, out object? result) ?
                (DealerStatuses)result : DealerStatuses.Unknown;
+        }
+
+        /// <summary>
+        /// Возвращает словарь <see cref="DealerStatuses"/>
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, DealerStatuses> ToDictionary()
+        {
+            var result = new Dictionary<string, DealerStatuses>();
+            foreach (var dealerStatus in Enum.GetValues(typeof(DealerStatuses)))
+            {
+                result.Add(dealerStatus.ToString(), (DealerStatuses)dealerStatus);
+            }
+            return result;
         }
     }
 }

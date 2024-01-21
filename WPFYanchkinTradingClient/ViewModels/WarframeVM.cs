@@ -23,6 +23,20 @@ namespace WPFYanchkinTradingClient.ViewModels
             set => SetProperty(ref _dealTypesDictionary, value);
         }
 
+        private Dictionary<string, Regions> _regionsDictionary;
+        public Dictionary<string, Regions> RegionsDictionary
+        {
+            get => _regionsDictionary;
+            set => SetProperty(ref _regionsDictionary, value);
+        }
+
+        private Dictionary<string, DealerStatuses> _dealerStatusesDictionary;
+        public Dictionary<string, DealerStatuses> DealerStatusesDictionary
+        {
+            get => _dealerStatusesDictionary;
+            set => SetProperty(ref _dealerStatusesDictionary, value);
+        }
+
         #endregion
 
         #region Search
@@ -122,9 +136,12 @@ namespace WPFYanchkinTradingClient.ViewModels
         private bool FilterDealsCollection(object dealObject)
         {
             var deal = (DealDTO)dealObject;
-            return FilterDealType(deal.Type);
+            return FilterDealerStatus(deal.Dealer.Status)
+                && FilterDealType(deal.Type)
+                && FilterRegion(deal.Dealer.Region);
         }
 
+        #region DealType
         private string _filteredDealType;
         /// <summary>
         /// Фильтр типа сделки
@@ -147,10 +164,70 @@ namespace WPFYanchkinTradingClient.ViewModels
         /// <returns></returns>
         private bool FilterDealType(DealTypes dealType)
         {
-            if (string.IsNullOrEmpty(_filteredDealType) || _filteredDealType==DealTypes.Unknown.ToString())
+            if (string.IsNullOrEmpty(_filteredDealType))
                 return true;
             return DealTypesDictionary[_filteredDealType] == dealType;
         }
+        #endregion
+
+        #region Region
+        private string _filteredRegion;
+        /// <summary>
+        /// Фильтр региона
+        /// </summary>
+        public string FilteredRegion
+        {
+            get => _filteredRegion;
+            set
+            {
+                SetProperty(ref _filteredRegion, value);
+                if (DealsCollection != null)
+                    DealsCollection.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Ответ фильтра региона
+        /// </summary>
+        /// <param name="region"></param>
+        /// <returns></returns>
+        private bool FilterRegion(Regions region)
+        {
+            if (string.IsNullOrEmpty(_filteredRegion))
+                return true;
+            return RegionsDictionary[_filteredRegion] == region;
+        }
+        #endregion
+
+        #region DealerStatus
+        private string _filteredDealerStatus;
+        /// <summary>
+        /// Фильтр статуса сдельщика
+        /// </summary>
+        public string FilteredDealerStatus
+        {
+            get => _filteredDealerStatus;
+            set
+            {
+                SetProperty(ref _filteredDealerStatus, value);
+                if (DealsCollection != null)
+                    DealsCollection.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Ответ фильтра статуса сдельщика
+        /// </summary>
+        /// <param name="dealerStatus"></param>
+        /// <returns></returns>
+        private bool FilterDealerStatus(DealerStatuses dealerStatus)
+        {
+            if (string.IsNullOrEmpty(_filteredDealerStatus))
+                return true;
+            return DealerStatusesDictionary[_filteredDealerStatus] == dealerStatus;
+        }
+        #endregion
+
         #endregion
 
         public WarframeVM()
@@ -164,6 +241,8 @@ namespace WPFYanchkinTradingClient.ViewModels
         public async void OnViewLoaded()
         {
             DealTypesDictionary = DealTypesExtensions.ToDictionary();
+            RegionsDictionary = RegionsExtensions.ToDictionary();
+            DealerStatusesDictionary = DealerStatusesExtensions.ToDictionary();
             WarframeTradeItems = await _warframeModel.GetTradeItems();
             ItemsCollection = CollectionViewSource.GetDefaultView(WarframeTradeItems);
             ItemsCollection.Filter = FilterItemsCollection;

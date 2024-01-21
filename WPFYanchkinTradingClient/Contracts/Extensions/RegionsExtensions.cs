@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WPFYanchkinTradingClient.Contracts.Enums;
 
 namespace WPFYanchkinTradingClient.Contracts.Extensions
@@ -17,6 +18,20 @@ namespace WPFYanchkinTradingClient.Contracts.Extensions
         {
             return Enum.TryParse(typeof(Regions), region, true, out object? result) ? 
                 (Regions)result : Regions.Unknown;
+        }
+
+        /// <summary>
+        /// Получить словарь <see cref="Regions"/>
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, Regions> ToDictionary()
+        {
+            var result = new Dictionary<string, Regions>();
+            foreach(var dealType in Enum.GetValues(typeof(Regions)))
+            {
+                result.Add(dealType.ToString(), (Regions) dealType);
+    }
+            return result;
         }
     }
 }

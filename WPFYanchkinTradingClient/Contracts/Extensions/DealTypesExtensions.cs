@@ -21,9 +21,8 @@ namespace WPFYanchkinTradingClient.Contracts.Extensions
         }
 
         /// <summary>
-        /// Возвращает словарь типов сделок
+        /// Возвращает словарь <see cref="DealTypes"/>
         /// </summary>
-        /// <param name="dealTypes"></param>
         /// <returns></returns>
         public static Dictionary<string, DealTypes> ToDictionary()
         {
